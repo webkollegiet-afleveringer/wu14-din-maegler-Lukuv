@@ -26,7 +26,7 @@
                 font-size: 20px
             p
                 font-size: 16px
-                padding-top: 20px
+                margin-top: 20px
                 padding-bottom: 4px
             form
                 display: flex
@@ -53,7 +53,7 @@
 .homeInfoArticle
     display: flex
     flex-direction: column
-    .firstArticle
+    .homeFirstArticle
         display: flex
         gap: 93px
         border-bottom: 1px #D3DEE8 solid
@@ -62,10 +62,46 @@
             padding-bottom: 30px
         h3
             padding-bottom: 12px
-        .firstP
+        .homeFirstP
             padding-bottom: 20px
-        .secondP
+        .homeSecondP
             padding-bottom: 40px
+        .homeFunFact
+            gap: 97px
+            display: flex
+            .homeFunFact1
+                display: flex
+                gap: 20px
+                .homeFunFactsvg
+                    background: #EEF7FF
+                    width: 70px
+                    height: 70px
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    svg
+                span
+                    .homeFunFactNumber
+                        font-size: 24px
+                    .homeFunFactText
+                        font-size: 18px
+            .homeFunFact2
+                display: flex
+                gap: 20px
+                .homeFunFactsvg
+                    background: #EEF7FF
+                    width: 70px
+                    height: 70px
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    svg
+                span
+                    .homeFunFactNumber
+                        font-size: 24px
+                    .homeFunFactText
+                        font-size: 18px
+
     .secondArticle
         display: flex
         flex-direction: column
@@ -76,12 +112,30 @@
     background: #F8F8FB
     width: 100%
     text-align: center
+    height: 1474px
     .maxWidth
+        display: flex
+        flex-direction: column
+        align-items: center
         >h2
-            padding-top: 120px
+            margin-top: 120px
         >p
-            padding-top: 12px
+            margin-top: 12px
             padding-bottom: 62px
+        >a
+            margin-top: 42px
+            font-size: 18px
+            display: flex
+            background: #162A41
+            border-radius: 2px
+            width: 178px
+            height: 62px
+            color: white
+            text-decoration: none
+            text-align: center
+            justify-content: center
+            align-items: center
+            margin-bottom: 120px
 
 .homeNewsDiv
     height: 284px
@@ -110,7 +164,11 @@
                 background: transparent
             button
                 background: transparent
+                display: flex
+                align-items: center
                 border: none
+                &:active
+                    scale: 0.9
 .homeAgentsContainer
     height: 984px
     >div
@@ -118,12 +176,17 @@
         justify-items: center
         >h2
             font-size: 38px
+            margin-top: 126px
         >p
             font-size: 18px
+            margin-top: 16px
+
         >a
+            margin-top: 42px
             font-size: 18px
             display: flex
             background: #162A41
+            border-radius: 2px
             width: 194px
             height: 62px
             color: white
@@ -143,10 +206,10 @@
             color: white
             max-width: 50%
             h2
-                padding-top: 102px
+                margin-top: 102px
                 font-size: 38px
             p
-                padding-top: 12px
+                margin-top: 12px
                 padding-bottom: 24px
                 font-size: 18px
             .homeAppButtonsDiv
@@ -181,9 +244,9 @@
         .homePhone1
             position: absolute
             z-index: 1
-            right: 30%
+            right: 230px
             bottom: 0
         .homePhone2
             position: absolute
             bottom: 0
-            right: 1%
+            right: 58px

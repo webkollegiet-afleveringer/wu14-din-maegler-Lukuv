@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import Header from "./components/header";
 import "./home.sass"
+import Footer from "./components/footer";
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,14 +18,50 @@ function Home() {
                 </svg><p>Hvad skal din næste bolig indeholde</p><form onSubmit={handleSubmit}><input type="text" placeholder="Søg på fx. glaskeramisk komfur, bryggers, kælder eller lignende" /><button type="submit">Søg</button></form></div>
             </div>
         </section>
-        <article className="homeInfoArticle"><div className="maxWidth"><div className="firstArticle"><img src="Image.png" alt="38+ års mægler-erfaring" /><div><h2>Vi har fulgt danskerne hjem <br /> i snart 4 årtier</h2><h3>Det synes vi siger noget om os!</h3><p className="firstP">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has normal distribution.</p><p className="secondP">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p><img src="Funfact.png" alt="4829 boliger solgt 158 boliger til salg" /></div></div></div><div className="secondArticle"><div className="maxWidth"><img src="Feature.png" alt="" /></div></div></article>
-        <section className="homeHouseSelectSection"><div className="maxWidth"><h2>Udvalgte Boliger</h2><p>There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some</p></div></section>
+        <article className="homeInfoArticle"><div className="maxWidth"><div className="homeFirstArticle"><img src="Image.png" alt="38+ års mægler-erfaring" /><div><h2>Vi har fulgt danskerne hjem <br /> i snart 4 årtier</h2><h3>Det synes vi siger noget om os!</h3><p className="homeFirstP">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has normal distribution.</p><p className="homeSecondP">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p><div className="homeFunFact"><div className="homeFunFact1"><span className="homeFunFactsvg"><svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <g clipPath="url(#clip0_72_23)">
+                <path d="M38.6146 12.9655L25.0801 0.543047C24.6355 0.187441 24.1044 0 23.5445 0C22.9846 0 22.4523 0.187441 22.0078 0.543047L8.47467 12.9284C7.414 13.7754 7.23813 15.3225 8.0901 16.3863C8.93445 17.4437 10.4834 17.6238 11.548 16.7709L23.5445 5.69797L35.5435 16.8092C36.5339 17.6067 38.1939 17.4347 38.9991 16.4223C39.8498 15.3629 39.6763 13.8134 38.6146 12.9655Z" fill="#162A41" />
+                <path d="M35.8481 0.00366211H30.9267C30.2466 0.00366211 29.6963 0.553928 29.6963 1.23405V1.42813L37.0785 8.23689V1.23405C37.0785 0.553928 36.5283 0.00366211 35.8481 0.00366211Z" fill="#162A41" />
+                <path d="M3.85905 19.7715H1.23429C0.554254 19.7715 0.00390625 20.3218 0.00390625 21.0019V40.7697C0.00390625 41.4497 0.554172 42.0001 1.23429 42.0001H3.85905C5.89441 42.0001 7.55013 40.3444 7.55013 38.309V23.4626C7.55013 21.4272 5.89449 19.7715 3.85905 19.7715Z" fill="#162A41" />
+                <path d="M40.9913 22.6998C39.9823 21.9616 38.5798 22.1092 37.7431 23.0197L31.0992 31.2877C30.6316 31.7798 29.7457 32.0751 29.2782 32.0751H18.6232C17.9341 32.0751 17.3928 31.5339 17.3928 30.8447C17.3928 30.1556 17.9341 29.6144 18.6232 29.6144C24.1352 29.6144 22.3389 29.6144 28.4661 29.6144C29.8196 29.6144 30.9268 28.507 30.9268 27.1537C30.9268 25.8002 29.8195 24.693 28.4661 24.693C22.6879 24.693 28.1995 24.693 22.0191 24.693C21.4059 24.693 21.1001 24.3041 20.6164 23.8809C19.8782 23.2166 19.0416 22.7244 18.1803 22.3799C15.5138 21.291 12.4326 21.6205 10.0107 23.3048C10.0107 27.7848 10.0107 34.4604 10.0107 39.5393H28.4662C30.7793 39.5393 32.994 38.432 34.3721 36.5864L41.5081 26.1694C42.3201 25.0866 42.0986 23.5118 40.9913 22.6998Z" fill="#162A41" />
+                <path d="M23.5425 9.04907L12.4717 19.2684V19.6022C13.2839 19.4151 14.1117 19.2885 14.9588 19.2885C16.3923 19.2885 17.7884 19.5624 19.1101 20.1019C19.3707 20.2061 19.6044 20.3536 19.8538 20.4763V18.5411C19.8538 17.8611 20.404 17.3108 21.0841 17.3108H26.0056C26.6856 17.3108 27.236 17.861 27.236 18.5411V22.2322H28.4665C30.4405 22.2322 32.1467 23.4001 32.9301 25.081L34.6182 22.9803V19.2976L23.5425 9.04907Z" fill="#162A41" />
+                <path d="M22.3145 19.7715V22.0986L22.4623 22.2323H24.7752V19.7715H22.3145Z" fill="#162A41" />
+            </g>
+            <defs>
+                <clipPath id="clip0_72_23">
+                    <rect width="42" height="42" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+
+        </span>
+            <span><p className="homeFunFactNumber">4829</p><p className="homeFunFactText">boliger solgt</p></span></div><div className="homeFunFact2">
+
+                <span className="homeFunFactsvg">
+                    <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clipPath="url(#clip0_72_12)">
+                            <path d="M20.9998 5.74342L41.9997 17.8677V12.1243L20.9998 0L13.7576 4.1813V0H5.64826V8.86323L0 12.1243V17.8677L20.9998 5.74342Z" fill="#162A41" />
+                            <path d="M25.0547 22.2305H31.0664V25.418H25.0547V22.2305Z" fill="#162A41" />
+                            <path d="M10.9336 22.2305H16.9453V33.8906H10.9336V22.2305Z" fill="#162A41" />
+                            <path d="M3.29297 18.8081V33.8905H8.47267V19.7694H19.4063V33.8905H38.7071V18.8081L21 8.58496L3.29297 18.8081ZM22.5938 19.7694H33.5274V27.8788H22.5938V19.7694Z" fill="#162A41" />
+                            <path d="M0 36.3516H42V42H0V36.3516Z" fill="#162A41" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_72_12">
+                                <rect width="42" height="42" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </span>
+                <span><p className="homeFunFactNumber">158</p><p className="homeFunFactText">boliger til salg</p></span></div></div></div></div></div><div className="secondArticle"><div className="maxWidth"><img src="Feature.png" alt="" /></div></div></article>
+        <section className="homeHouseSelectSection"><div className="maxWidth"><h2>Udvalgte Boliger</h2><p>There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some</p><Link to="/propertylist" >Se alle boliger</Link></div></section>
         <div className="homeNewsDiv"><div className="maxWidth"><h2>Tilmeld dig vores nyhedsbrev og
             hold dig opdateret på boligmarkedet</h2><form onSubmit={handleSubmit}><input placeholder="Indtast din email adresse" type="text" /><button type="submit"><svg width="29" height="20" viewBox="0 0 29 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M28.5586 8.85831L28.5572 8.85677L20.6936 0.469672C20.1045 -0.158634 19.1516 -0.156296 18.5652 0.475156C17.9789 1.10653 17.9812 2.12774 18.5703 2.75612L23.8499 8.3871H1.50494C0.673763 8.3871 0 9.10919 0 10C0 10.8908 0.673763 11.6129 1.50494 11.6129H23.8498L18.5703 17.2439C17.9812 17.8723 17.979 18.8935 18.5653 19.5248C19.1517 20.1564 20.1046 20.1586 20.6937 19.5303L28.5573 11.1432L28.5587 11.1417C29.1481 10.5112 29.1462 9.48669 28.5586 8.85831Z" fill="#162A41" />
             </svg>
             </button></form></div></div>
-        <section className="homeAgentsContainer"><div className="maxWidth"><h2>Mød vores engagerede medarbejdere</h2><p>Din Mægler er garant for altid veluddannet assistance i dit boligsalg. Kontakt en af vores medarbejdere.</p><Link>Se alle mæglere</Link></div></section>
+        <section className="homeAgentsContainer"><div className="maxWidth"><h2>Mød vores engagerede medarbejdere</h2><p>Din Mægler er garant for altid veluddannet assistance i dit boligsalg. Kontakt en af vores medarbejdere.</p><Link to="/agents">Se alle mæglere</Link></div></section>
         <div className="homeMobileAd">
             <div className="maxWidth">
                 <article><h2>Hold dig opdateret
@@ -51,7 +88,7 @@ function Home() {
                 </div>
             </div>
         </div >
-
+        <Footer />
     </div >);
 }
 
