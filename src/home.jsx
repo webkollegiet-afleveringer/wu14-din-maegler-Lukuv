@@ -2,12 +2,22 @@ import { Link } from "react-router";
 import Header from "./components/header";
 import "./home.sass"
 import Footer from "./components/footer";
+import { useState } from "react";
+import HouseSelction from "./houseselection";
+
 
 const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Infomation sendt med videre");
 };
 
 function Home() {
+    const [spamEmail, setSpamEmail] = useState("")
+    const emailSubmit = (e) => {
+        e.preventDefault();
+        alert(`Du modtager nu spam mails til mailen ${spamEmail} `)
+    };
+
     return (<div>
         <Header />
         <section className="homeSearchSection">
@@ -55,13 +65,36 @@ function Home() {
                     </svg>
                 </span>
                 <span><p className="homeFunFactNumber">158</p><p className="homeFunFactText">boliger til salg</p></span></div></div></div></div></div><div className="secondArticle"><div className="maxWidth"><img src="Feature.png" alt="" /></div></div></article>
-        <section className="homeHouseSelectSection"><div className="maxWidth"><h2>Udvalgte Boliger</h2><p>There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some</p><Link to="/propertylist" >Se alle boliger</Link></div></section>
-        <div className="homeNewsDiv"><div className="maxWidth"><h2>Tilmeld dig vores nyhedsbrev og
-            hold dig opdateret på boligmarkedet</h2><form onSubmit={handleSubmit}><input placeholder="Indtast din email adresse" type="text" /><button type="submit"><svg width="29" height="20" viewBox="0 0 29 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M28.5586 8.85831L28.5572 8.85677L20.6936 0.469672C20.1045 -0.158634 19.1516 -0.156296 18.5652 0.475156C17.9789 1.10653 17.9812 2.12774 18.5703 2.75612L23.8499 8.3871H1.50494C0.673763 8.3871 0 9.10919 0 10C0 10.8908 0.673763 11.6129 1.50494 11.6129H23.8498L18.5703 17.2439C17.9812 17.8723 17.979 18.8935 18.5653 19.5248C19.1517 20.1564 20.1046 20.1586 20.6937 19.5303L28.5573 11.1432L28.5587 11.1417C29.1481 10.5112 29.1462 9.48669 28.5586 8.85831Z" fill="#162A41" />
-            </svg>
-            </button></form></div></div>
-        <section className="homeAgentsContainer"><div className="maxWidth"><h2>Mød vores engagerede medarbejdere</h2><p>Din Mægler er garant for altid veluddannet assistance i dit boligsalg. Kontakt en af vores medarbejdere.</p><Link to="/agents">Se alle mæglere</Link></div></section>
+        <section className="homeHouseSelectSection">
+            <div className="maxWidth">
+                <h2>Udvalgte Boliger</h2>
+                <p>There are many variations of passages of Lorem Ipsum available but the this in majority have suffered alteration in some</p>
+                <HouseSelction />
+                <Link to="/propertylist" >Se alle boliger</Link>
+            </div>
+        </section>
+        <div className="homeNewsDiv">
+            <div className="maxWidth">
+                <h2>Tilmeld dig vores nyhedsbrev og
+                    hold dig opdateret på boligmarkedet
+                </h2>
+                <form onSubmit={emailSubmit}>
+                    <input required placeholder="Indtast din email adresse" type="text" value={spamEmail} onChange={(e) => setSpamEmail(e.target.value)} />
+                    <button type="submit"><svg width="29" height="20" viewBox="0 0 29 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <path d="M28.5586 8.85831L28.5572 8.85677L20.6936 0.469672C20.1045 -0.158634 19.1516 -0.156296 18.5652 0.475156C17.9789 1.10653 17.9812 2.12774 18.5703 2.75612L23.8499 8.3871H1.50494C0.673763 8.3871 0 9.10919 0 10C0 10.8908 0.673763 11.6129 1.50494 11.6129H23.8498L18.5703 17.2439C17.9812 17.8723 17.979 18.8935 18.5653 19.5248C19.1517 20.1564 20.1046 20.1586 20.6937 19.5303L28.5573 11.1432L28.5587 11.1417C29.1481 10.5112 29.1462 9.48669 28.5586 8.85831Z" fill="#162A41" />
+                    </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <section className="homeAgentsContainer">
+            <div className="maxWidth">
+                <h2>Mød vores engagerede medarbejdere</h2>
+                <p>Din Mægler er garant for altid veluddannet assistance i dit boligsalg. Kontakt en af vores medarbejdere.</p>
+                <Link to="/agents">Se alle mæglere</Link>
+            </div>
+        </section>
         <div className="homeMobileAd">
             <div className="maxWidth">
                 <article><h2>Hold dig opdateret

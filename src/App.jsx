@@ -7,6 +7,7 @@ import Favorites from "./favorites";
 import Contact from "./contact";
 import PropertyDetail from "./propertydetail";
 import Hov from "./hov";
+import Login from "./login";
 function App() {
   return (<div>
     <Routes>
@@ -17,6 +18,7 @@ function App() {
       <Route path="/agentsdetail" element={<AgentsDetail />}></Route>
       <Route path="/favorites" element={<Favorites />}></Route>
       <Route path="/contact" element={<Contact />}></Route>
+      <Route path="/login" element={<Login />}></Route>
       <Route path="*" element={<Hov />}></Route>
     </Routes>
   </div>);
