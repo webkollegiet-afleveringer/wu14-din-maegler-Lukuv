@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./houseselection.sass";
+import "./houselisting.sass";
 import { Link } from "react-router";
 
 const API_URL = "https://dinmaegler.onrender.com";
@@ -12,10 +12,13 @@ const toAbsoluteImageUrl = (imageUrl) => {
     return imageUrl.startsWith("http") ? imageUrl : `${API_URL}${imageUrl}`;
 };
 
-function HouseSelction() {
+function HouseListing() {
     const [homes, setHomes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
+
+    // HUSK AT FJERN CONSOLE LOG FØR DU AFLEVERE!!!
+    console.log(homes);
 
 
     useEffect(() => {
@@ -54,46 +57,46 @@ function HouseSelction() {
     }, []);
 
     if (isLoading) {
-        return <div className="HouseSelectionContainer">Indlæser boliger...</div>;
+        return <div className="HouseListingContainer">Indlæser boliger...</div>;
     }
 
     if (errorMessage) {
-        return <div className="HouseSelectionContainer">{errorMessage}</div>;
+        return <div className="HouseListingContainer">{errorMessage}</div>;
     }
 
     return (
-        <div className="HouseSelectionContainer">
-            {homes.slice(0, 4).map((home) => {
+        <div className="HouseListingContainer">
+            {homes.slice().map((home) => {
                 const imageUrl = toAbsoluteImageUrl(home?.images?.[0]?.url || home?.image?.url);
                 const adress1 = home?.adress1 || "Ukendt adresse";
                 const cityLine = [home?.postalcode, home?.city].filter(Boolean).join(" ");
-                const homeType = <p className="houseSelectionHomeType"> {home.type} </p>
-                const expensesCost = <p className="houseSelectionExpensesCost">Ejerudgift: {home.cost} kr.</p>
+                const homeType = <p className="houseListingHomeType"> {home.type} </p>
+                const expensesCost = <p className="houseListingExpensesCost">Ejerudgift: {home.cost} kr.</p>
                 const formattedPrice =
                     typeof home?.price === "number" ? `Kr. ${home.price.toLocaleString("da-DK")}` : home?.price;
 
                 return (
-                    <article className="HouseSelectionCard" key={home?.id || adress1}>
+                    <article className="HouseListingCard" key={home?.id || adress1}>
                         <Link to={"/propertydetail/" + home.id}>
-                            {imageUrl ? <img src={imageUrl} className="houseSelectionImage" alt={adress1} /> : null}
-                            <div className="houseSelectionInformationMainDiv">
+                            {imageUrl ? <img src={imageUrl} className="houseListingImage" alt={adress1} /> : null}
+                            <div className="houseListingInformationMainDiv">
                                 <h3>{adress1}</h3>
                                 <p>{cityLine}</p>
-                                <p className="houseSelectionEjerudgift">{homeType} • {expensesCost}</p>
+                                <p className="houseListingEjerudgift">{homeType} • {expensesCost}</p>
                             </div>
-                            <span className="houseSelectionSvgLine">
+                            <span className="houseListingSvgLine">
 
                                 <svg width="492" height="1" viewBox="0 0 492 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="492" height="1" fill="#D3DEE8" />
                                 </svg>
                             </span>
 
-                            <div className="houseSelectionPriceDiv">
-                                <span className="houseSelectionPriceSpan">
-                                    <p className={"houseSelectionEnergy " + home.energylabel}>{home.energylabel}</p>
+                            <div className="houseListingPriceDiv">
+                                <span className="houseListingPriceSpan">
+                                    <p className={"houseListingEnergy " + home.energylabel}>{home.energylabel}</p>
                                     <p>{home.rooms} værelser • {home.livingspace} m²</p>
                                 </span>
-                                <p className="houseSelectionPriceP">{formattedPrice || "Pris ikke oplyst"}</p>
+                                <p className="houseListingPriceP">{formattedPrice || "Pris ikke oplyst"}</p>
                             </div>
                         </Link>
                     </article>
@@ -103,4 +106,4 @@ function HouseSelction() {
     );
 }
 
-export default HouseSelction;
+export default HouseListing;
