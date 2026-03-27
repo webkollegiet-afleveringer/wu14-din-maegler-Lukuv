@@ -9,19 +9,21 @@ import PropertyDetail from "./propertydetail";
 import Hov from "./hov";
 import Login from "./login";
 function App() {
-  return (<div>
-    <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/propertylist" element={<PropertyList />}></Route>
-      <Route path="/propertyDetail" element={<PropertyDetail />}></Route>
-      <Route path="/agents" element={<Agents />}></Route>
-      <Route path="/agentsdetail" element={<AgentsDetail />}></Route>
-      <Route path="/favorites" element={<Favorites />}></Route>
-      <Route path="/contact" element={<Contact />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="*" element={<Hov />}></Route>
-    </Routes>
-  </div>);
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/propertylist" element={<PropertyList />}></Route>
+        <Route path="/propertyDetail" element={<PropertyDetail />}></Route>
+        <Route path="/agents" element={<Agents />}></Route>
+        <Route path="/agentsdetail" element={<AgentsDetail />}></Route>
+        <Route path="/favorites" element={<Favorites />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="*" element={<Hov />}></Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
