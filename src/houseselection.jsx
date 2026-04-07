@@ -67,8 +67,8 @@ function HouseSelction() {
                 const imageUrl = toAbsoluteImageUrl(home?.images?.[0]?.url || home?.image?.url);
                 const adress1 = home?.adress1 || "Ukendt adresse";
                 const cityLine = [home?.postalcode, home?.city].filter(Boolean).join(" ");
-                const homeType = <p className="houseSelectionHomeType"> {home.type} </p>
-                const expensesCost = <p className="houseSelectionExpensesCost">Ejerudgift: {home.cost} kr.</p>
+                const homeType = home?.type || "Bolig";
+                const expensesCost = `Ejerudgift: ${home?.cost ?? "Ikke oplyst"} kr.`;
                 const formattedPrice =
                     typeof home?.price === "number" ? `Kr. ${home.price.toLocaleString("da-DK")}` : home?.price;
 
@@ -79,7 +79,11 @@ function HouseSelction() {
                             <div className="houseSelectionInformationMainDiv">
                                 <h3>{adress1}</h3>
                                 <p>{cityLine}</p>
-                                <p className="houseSelectionEjerudgift">{homeType} • {expensesCost}</p>
+                                <p className="houseSelectionEjerudgift">
+                                    <span className="houseSelectionHomeType">{homeType}</span>
+                                    <span>•</span>
+                                    <span className="houseSelectionExpensesCost">{expensesCost}</span>
+                                </p>
                             </div>
                             <span className="houseSelectionSvgLine">
 
@@ -89,10 +93,10 @@ function HouseSelction() {
                             </span>
 
                             <div className="houseSelectionPriceDiv">
-                                <span className="houseSelectionPriceSpan">
+                                <div className="houseSelectionPriceSpan">
                                     <p className={"houseSelectionEnergy " + home.energylabel}>{home.energylabel}</p>
                                     <p>{home.rooms} værelser • {home.livingspace} m²</p>
-                                </span>
+                                </div>
                                 <p className="houseSelectionPriceP">{formattedPrice || "Pris ikke oplyst"}</p>
                             </div>
                         </Link>

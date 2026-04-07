@@ -72,7 +72,9 @@ function Header() {
                 fill="white"
               />
             </svg>
-            Login
+            <p className="LoginLoginLoginP">
+              Log ind
+            </p>
           </Link>
         </div>
       </section>
