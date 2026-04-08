@@ -3,12 +3,24 @@ import Header from "./components/header";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "./propertydetail.sass"
+import ViewButtons from "./viewButtons";
+
+const API_URL = "https://dinmaegler.onrender.com";
+
+const toAbsoluteImageUrl = (imageUrl) => {
+  if (!imageUrl) {
+    return "";
+  }
+
+  return imageUrl.startsWith("http") ? imageUrl : `${API_URL}${imageUrl}`;
+};
 
 function PropertyDetail() {
   const { propertyId } = useParams();
   const [homeData, setHomeData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [activeView, setActiveView] = useState("gallery");
   const formattedPrice =
     typeof homeData?.price === "number"
       ? new Intl.NumberFormat("da-DK", {
@@ -49,12 +61,30 @@ function PropertyDetail() {
         maximumFractionDigits: 0,
       }).format(homeData.cost)
       : homeData?.cost || "Pris ikke oplyst";
+  const galleryImage = toAbsoluteImageUrl(homeData?.images?.[0]?.url);
+  const floorplanImage = toAbsoluteImageUrl(homeData?.floorplan?.url);
+  const mapQuery = homeData?.title || [homeData?.adress1, homeData?.postalcode, homeData?.city].filter(Boolean).join(" ");
+  const mapEmbedUrl = mapQuery
+    ? `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`
+    : "";
+
+  const activeImage =
+    activeView === "floorplan"
+      ? floorplanImage
+      : galleryImage;
+
+  const activeImageLabel =
+    activeView === "floorplan"
+      ? "Plantegning"
+      : activeView === "map"
+        ? "Kortvisning kommer senere"
+        : "Boligbillede";
   useEffect(() => {
+    setActiveView("gallery");
+
     const fetchHome = async () => {
       try {
-        const response = await fetch(
-          `https://dinmaegler.onrender.com/homes/${propertyId}`
-        );
+        const response = await fetch(`${API_URL}/homes/${propertyId}`);
 
         if (!response.ok) {
           throw new Error("Kunne ikke hente data");
@@ -62,8 +92,6 @@ function PropertyDetail() {
 
         const data = await response.json();
         setHomeData(data);
-        console.log(data);
-        //HUSK AT FJERN LOG!!!!
 
       } catch (err) {
         setError("Der skete en fejl ved hentning af data.");
@@ -71,6 +99,7 @@ function PropertyDetail() {
         setIsLoading(false);
       }
     };
+
 
     fetchHome();
   }, [propertyId]);
@@ -82,7 +111,26 @@ function PropertyDetail() {
   return (
     <div>
       <Header />
-      <img className="propertyDetailHeaderImage" src={homeData.images[0].url}></img>
+      {activeView === "map" && mapEmbedUrl ? (
+        <iframe
+          className="propertyDetailHeaderMap"
+          src={mapEmbedUrl}
+          title={`Kort over ${mapQuery}`}
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      ) : activeImage ? (
+        <img
+          className="propertyDetailHeaderImage"
+          src={activeImage}
+          alt={activeImageLabel}
+        />
+      ) : (
+        <div className="propertyDetailHeaderFallback">
+          {activeImageLabel}
+        </div>
+      )}
       <div className="maxWidth">
         <section className="propertyDetailTopGrid">
           <div>
@@ -92,67 +140,68 @@ function PropertyDetail() {
               {homeData.postalcode}
             </p>
           </div>
+          <ViewButtons activeView={activeView} onViewChange={setActiveView} />
           {formattedPrice}
         </section>
         <article className="propertyDetailArticle" aria-label="Boligoplysninger">
           <dl className="propertyDetailFactList">
             <div className="propertyDetailFactRow">
-              <dt>Sagsnummer</dt>
+              <dt>Sagsnummer:</dt>
               <dd>{homeData.id}</dd>
             </div>
             <div className="propertyDetailFactRow">
-              <dt>Boligareal</dt>
-              <dd>{homeData.livingspace}</dd>
+              <dt>Boligareal:</dt>
+              <dd>{homeData.livingspace} m²</dd>
             </div>
             <div className="propertyDetailFactRow">
-              <dt>Grundareal</dt>
-              <dd>{homeData.lotsize}</dd>
+              <dt>Grundareal:</dt>
+              <dd>{homeData.lotsize || "Grundareal blev ikke fundet"} m²</dd>
             </div>
             <div className="propertyDetailFactRow">
-              <dt>Rum/værelser</dt>
+              <dt>Rum/værelser:</dt>
               <dd>{homeData.rooms}</dd>
             </div>
             <div className="propertyDetailFactRow">
-              <dt>Antal Plan</dt>
+              <dt>Antal Plan:</dt>
               <dd>(Ikke fundet)</dd>
             </div>
           </dl>
 
           <dl className="propertyDetailFactList">
             <div className="propertyDetailFactRow">
-              <dt>Kælder</dt>
-              <dd>{homeData.basementsize}</dd>
+              <dt>Kælder:</dt>
+              <dd>{homeData.basementsize || "-"}</dd>
             </div>
             <div className="propertyDetailFactRow">
-              <dt>Byggeår</dt>
-              <dd>{homeData.built}</dd>
+              <dt>Byggeår:</dt>
+              <dd>{homeData.built || "-"}</dd>
             </div>
             <div className="propertyDetailFactRow">
-              <dt>Ombygget</dt>
-              <dd>{homeData.remodel}</dd>
+              <dt>Ombygget:</dt>
+              <dd>{homeData.remodel || "-"}</dd>
             </div>
             <div className="propertyDetailFactRow">
-              <dt>Energimærke</dt>
-              <dd>{homeData.energylabel}</dd>
+              <dt>Energimærke:</dt>
+              <dd>{homeData.energylabel || "-"}</dd>
             </div>
           </dl>
 
           <dl className="propertyDetailFactList">
             <div className="propertyDetailFactRow">
               <dt>Udbetaling</dt>
-              <dd>{formattedPayment}</dd>
+              <dd>{formattedPayment || "-"}</dd>
             </div>
             <div className="propertyDetailFactRow">
               <dt>Brutto ex ejerudgift</dt>
-              <dd>{formattedGross}</dd>
+              <dd>{formattedGross || "-"}</dd>
             </div>
             <div className="propertyDetailFactRow">
               <dt>Netto ex ejerudgift</dt>
-              <dd>{formattedNetto}</dd>
+              <dd>{formattedNetto || "-"}</dd>
             </div>
             <div className="propertyDetailFactRow">
               <dt>Ejerudgift</dt>
-              <dd>{formattedCost}</dd>
+              <dd>{formattedCost || "-"}</dd>
             </div>
           </dl>
         </article>

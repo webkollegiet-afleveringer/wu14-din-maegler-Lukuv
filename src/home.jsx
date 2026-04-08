@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Header from "./components/header";
 import "./home.sass";
 import Footer from "./components/footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HouseSelction from "./houseselection";
 
 const handleSubmit = (e) => {
@@ -17,6 +17,23 @@ function Home() {
     alert(`Du modtager nu spam mails til mailen ${spamEmail} `);
   };
 
+  const [houseForSale, setHouseForSale] = useState([])
+
+  useEffect(() => {
+    const loadHouseForSale = async () => {
+      try {
+        const response = await fetch("https://dinmaegler.onrender.com/homes/count");
+        if (!response.ok) throw new Error("Kunne ikke hente antal boliger");
+        const countData = await response.json();
+        setHouseForSale(countData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadHouseForSale();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -24,7 +41,7 @@ function Home() {
         <div className="homeSearchContainer">
           <h2>Søg efter din drømmebolig</h2>
           <div className="homeSearchDiv">
-            <h3>Søg blandt 158 boliger til salg i 74 butikker </h3>
+            <h3>Søg blandt {houseForSale} boliger til salg i 74 butikker </h3>
             <svg
               width="43"
               height="4"
@@ -144,7 +161,7 @@ function Home() {
                     </svg>
                   </span>
                   <span>
-                    <p className="homeFunFactNumber">158</p>
+                    <p className="homeFunFactNumber">{houseForSale}</p>
                     <p className="homeFunFactText">boliger til salg</p>
                   </span>
                 </div>

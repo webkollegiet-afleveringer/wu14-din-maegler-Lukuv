@@ -17,10 +17,6 @@ function HouseListing() {
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
 
-    // HUSK AT FJERN CONSOLE LOG FØR DU AFLEVERE!!!
-    console.log(homes);
-
-
     useEffect(() => {
         let isActive = true;
 

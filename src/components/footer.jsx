@@ -161,16 +161,16 @@ function Footer() {
               <p>Quick Links</p>
               <ul>
                 <li>
-                  <Link to="propertylist">Boliger til salg</Link>
+                  <Link to="/propertylist">Boliger til salg</Link>
                 </li>
                 <li>
-                  <Link to="agents">Mæglere</Link>
+                  <Link to="/agents">Mæglere</Link>
                 </li>
                 <li>
-                  <Link to="contact">Kontakt os</Link>
+                  <Link to="/contact">Kontakt os</Link>
                 </li>
                 <li>
-                  <Link to="login">Log ind / bliv bruger</Link>
+                  <Link to="/login">Log ind / bliv bruger</Link>
                 </li>
               </ul>
             </div>
