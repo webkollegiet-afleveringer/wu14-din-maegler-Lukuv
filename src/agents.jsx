@@ -1,6 +1,8 @@
 import Footer from "./components/footer";
 import Header from "./components/header";
 import { useEffect, useState } from "react";
+import "./agents.sass"
+import { Link } from "react-router";
 
 const API_URL = "https://dinmaegler.onrender.com";
 
@@ -47,26 +49,29 @@ function Agents() {
   return (
     <div>
       <Header />
-      <main>
-        <h1>Mæglere</h1>
-        {isLoading ? <p>Indlæser mæglere...</p> : null}
-        {errorMessage ? <p>{errorMessage}</p> : null}
+      <main className="agentGrid">
+        <div className="maxWidth">
 
-        {!isLoading && !errorMessage
-          ? agents.map((agent) => (
-            <article key={agent?.id || agent?.email || agent?.name}>
-              {agent?.image?.url ? <img src={agent.image.url} alt={agent?.name || "Mægler"} /> : null}
-              <h2>{agent?.name || "Ukendt navn"}</h2>
-              <p>{agent?.title || "Titel ikke oplyst"}</p>
-              <p>{agent?.phone || "Telefon ikke oplyst"}</p>
-              <p>{agent?.email || "Email ikke oplyst"}</p>
-              <p>{agent?.description || "Ingen beskrivelse"}</p>
-            </article>
-          ))
-          : null}
+          {isLoading ? <p>Indlæser mæglere...</p> : null}
+          {errorMessage ? <p>{errorMessage}</p> : null}
+
+          {!isLoading && !errorMessage
+
+            ? agents.map((agent) => (
+              <article className="agentCard" key={agent?.id || agent?.email || agent?.name}>
+                <Link to={"/agentsdetail/" + agent.id}>
+                  {agent?.image?.url ? <img src={agent.image.url} className="agentImg" alt={agent?.name || "Mægler"} /> : null}
+                  <h3>{agent?.name || "Ukendt navn"}</h3>
+                  <p>{agent?.title || "Titel ikke oplyst"}</p>
+                  <p className="agentContact"><img title={agent.email || "Email er ikke oplyst"} src="Vector1.png" alt="" /><img src="Vector2.png" title={agent?.LinkedIn || "LinkedIn ikke fundet"} alt={agent?.title} /></p>
+                </Link>
+              </article>
+            ))
+            : null}
+        </div>
       </main>
       <Footer />
-    </div>
+    </div >
   );
 }
 

@@ -4,6 +4,7 @@ import "./home.sass";
 import Footer from "./components/footer";
 import { useEffect, useState } from "react";
 import HouseSelction from "./houseselection";
+import HomeAgents from "./homeagents";
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -221,6 +222,7 @@ function Home() {
             Din Mægler er garant for altid veluddannet assistance i dit boligsalg. Kontakt en af
             vores medarbejdere.
           </p>
+          <HomeAgents />
           <Link to="/agents">Se alle mæglere</Link>
         </div>
       </section>
