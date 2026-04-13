@@ -1,0 +1,210 @@
+.agentDetailPage
+    padding: 64px 0 120px
+
+.agentDetailStatus
+    border: 1px solid #d3dee8
+    background: #f8fbff
+    padding: 18px 20px
+    color: #162a41
+
+.agentDetailLayout
+    display: grid
+    grid-template-columns: minmax(0, 2fr) 320px
+    gap: 28px
+    align-items: start
+
+.agentProfileCard
+    border: 1px solid #d3dee8
+    background: #fff
+    padding: 40px
+    max-width: 730px
+
+.agentProfileTop
+    display: flex
+    gap: 22px
+    align-items: start
+
+.agentProfileImage
+    width: 280px
+    height: 280px
+    object-fit: cover
+    display: block
+
+.agentProfileFallback
+    width: 100%
+    aspect-ratio: 3 / 4
+    border: 1px dashed #c3d0dd
+    display: grid
+    place-items: center
+    color: #57667a
+    font-size: 14px
+
+.agentSocialStrip
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    display: flex
+    gap: 2px
+
+    a
+        flex: 1
+        display: grid
+        place-items: center
+        text-transform: lowercase
+        text-decoration: none
+        background: #162a41
+        color: #fff
+        font-size: 13px
+        font-weight: 600
+        height: 30px
+
+.agentIdentity
+    min-width: 0
+
+.agentHeadingRow
+    display: flex
+    align-items: start
+    justify-content: space-between
+    gap: 12px
+
+    h1
+        font-size: 24px
+        line-height: 1.2
+        color: #162a41
+
+.agentFavoriteButton
+    border: 1px solid #d3dee8
+    background: #f5f8fb
+    color: #5e728a
+    width: 30px
+    height: 30px
+    border-radius: 999px
+    cursor: pointer
+
+.agentTitle
+    margin-top: 8px
+    color: #7b7b7b
+    font-size: 18px
+
+.agentContactList
+    margin-top: 22px
+    list-style: none
+    display: grid
+    gap: 10px
+
+    li
+        display: flex
+        align-items: center
+        gap: 10px
+        color: #1f344d
+        font-size: 16px
+
+        img
+            width: 14px
+            height: 14px
+            object-fit: contain
+
+.agentAboutSection
+    margin-top: 26px
+
+    h2
+        font-size: 20px
+        font-weight: 500
+        color: #162a41
+
+    p
+        margin-top: 16px
+        color: #444
+        line-height: 1.75
+        font-size: 18px
+
+.agentContactForm
+    margin-top: 28px
+    border: 1px solid #d3dee8
+    padding: 20px
+    display: grid
+    gap: 16px
+
+    h3
+        color: #162a41
+        font-size: 24px
+        margin-bottom: 2px
+
+    label
+        display: grid
+        gap: 8px
+        color: #1f344d
+        font-size: 15px
+
+    input, textarea
+        width: 100%
+        border: 1px solid #d3dee8
+        background: #fff
+        padding: 12px 14px
+        font-size: 15px
+        color: #17283e
+
+    textarea
+        resize: vertical
+        min-height: 140px
+
+    button
+        width: 145px
+        height: 48px
+        border: none
+        background: #162a41
+        color: #fff
+        font-size: 15px
+        cursor: pointer
+
+.agentFormRow
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 14px
+
+.agentDetailSidebar
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+    .agentSidebarSearch
+        border: 1px solid #d3dee8
+        background: #eaf2fb
+        padding: 16px
+
+        h3
+            font-size: 28px
+            color: #162a41
+
+        input
+            margin-top: 14px
+            width: 100%
+            height: 44px
+            border: 1px solid #d3dee8
+            background: #fff
+            padding: 0 12px
+
+    .agentSidebarCallout
+        background: #162a41
+        color: #fff
+        min-height: 334px
+        padding: 36px 24px
+        display: flex
+        flex-direction: column
+        align-items: center
+        text-align: center
+
+        p
+            font-size: 38px
+            line-height: 1.3
+            font-weight: 600
+
+        span
+            margin-top: 18px
+            font-size: 16px
+            opacity: 0.9
+
+        strong
+            margin-top: 8px
+            font-size: 40px

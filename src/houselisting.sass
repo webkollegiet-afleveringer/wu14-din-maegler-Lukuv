@@ -1,0 +1,76 @@
+.HouseListingContainer
+    max-width: 1100px
+    display: grid
+    grid-template-columns: auto auto
+    gap: 30px
+    .HouseListingCard
+        width: 540px
+        height: 446px
+        background: white
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        justify-content: space-between
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.1)
+        &:hover
+            scale: 1.01
+        a
+            display: flex
+            flex-direction: column
+            text-decoration: none
+            color: black
+            .houseListingImage
+                width: 540px
+                height: 225px
+                max-width: 100%
+                max-height: 100%
+                object-fit: cover
+                object-position: 100% 100%
+            .houseListingInformationMainDiv
+                display: flex
+                padding: 24px
+                width: 100%
+                height: 100%
+                justify-content: space-between
+                gap: 8px
+                flex-direction: column
+                >h3
+                    font-size: 20px
+                    font-weight: 500
+                .houseListingEjerudgift
+                    display: flex
+                    gap: 5px
+                    align-items: center
+                    .houseListingHomeType
+                        font-size: 20px
+            .houseListingSvgLine
+                display: flex
+                align-self: center
+            .houseListingPriceDiv
+                padding: 24px
+                width: 100%
+                display: flex
+                justify-content: space-between
+                .houseListingPriceSpan
+                    gap: 27px
+                    display: flex
+                    flex-direction: row
+                    .houseListingPriceP
+                        font-size: 20px
+.houseListingPriceSpan
+    .houseListingEnergy
+        color: white
+        width: 30px
+        height: 30px
+        font-size: 20px
+        display: flex
+        align-items: center
+        justify-content: center
+    .A
+        background: #10AC84
+    .B
+        background: #f2c94c
+    .C
+        background: #f2994a
+    .D
+        background: #eb5757

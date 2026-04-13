@@ -1,0 +1,93 @@
+.loginUnderHeader
+    background-image: linear-gradient(rgba(22, 42, 65, 0.90), rgba(22, 42, 65, 0.90)), url("pageHeaderImage.jpg")
+    height: 350px
+    background-size: auto 100%
+    background-repeat: no-repeat
+    >div
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 100%
+        flex-direction: column
+        color: white
+        >p
+            display: flex
+            gap: 8px
+            align-items: center
+            >h3
+                font-size: 24px
+            >a
+                text-decoration: none
+                font-size: 18px
+                &:nth-child(1)
+                    color: white
+                &:nth-child(2)
+                    color: #162A41
+.loginLoginSection
+    margin: auto
+    >div
+        max-width: 920px
+        height: 746px
+        margin-top: 120px
+        margin-bottom: 120px
+        padding-top: 72px
+        display: flex
+        align-items: center
+        flex-direction: column
+        box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.1)
+        h3
+            font-size: 30px
+        >p
+            margin-top: 40px
+            font-size: 18px
+        .loginQuickLogin
+            min-width: 540px
+            max-width: 540px
+            margin-top: 40px
+            display: flex
+            flex-direction: column
+            p
+                font-size: 18px
+            >div
+                display: flex
+                gap: 15px
+                margin-top: 15px
+                .loginQuickButton
+                    width: 170px
+                    height: 60px
+                    border: none
+                    color: white
+                    font-size: 20px
+                    &:active
+                        scale: 0.98
+                .Google
+                    background: #DD4B39
+                .Facebook
+                    background: #3B5999
+                .Twitter
+                    background: #162A41
+
+        .loginInputForm
+            display: flex
+            flex-direction: column
+            margin-top: 40px
+            label
+                font-size: 18px
+                gap: 8px
+                display: flex
+                flex-direction: column
+                input
+                    width: 540px
+                    height: 60px
+                    outline: none
+                    border: 1px solid #D3DEE8
+                    margin-bottom: 24px
+                    padding: 15px
+                    font-size: 18px
+            button
+                width: 540px
+                height: 60px
+                border-radius: 2px
+                font-size: 20px
+                background: #162A41
+                color: white
